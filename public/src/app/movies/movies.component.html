@@ -1,0 +1,22 @@
+<div class="card ml-3 mr-3 mt-3">
+  <div class="card-header">
+    <h5>Movie List</h5>
+    <a [routerLink]="['/movies/new']">Add a new movie</a>
+  </div>
+  <div class="card-body">
+    <table class="table">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col">Movie Title</th>
+        <th scope="col">Available Actions</th>
+      </tr>
+      </thead>
+      <tbody *ngFor="let movie of movies">
+      <tr>
+        <td>{{movie.name}}</td>
+        <td>  <a [routerLink]="[movie._id]">Read Reviews</a> | <a [routerLink]="[movie._id,'review']">Write Review</a> </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

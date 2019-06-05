@@ -1,0 +1,24 @@
+<div class="card ml-3 mr-3 mt-3">
+  <div class="card-header">
+    <h5>Reviews for {{ movie.name }}</h5>
+    <button class="btn btn-danger" (click)="deleteMovie(movie)">DELETE MOVIE</button>
+  </div>
+  <div class="card-body">
+    <table class="table">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col">Reviewer</th>
+        <th scope="col">Stars</th>
+        <th scope="col">Reviews</th>
+      </tr>
+      </thead>
+      <tbody *ngFor="let rating of movie.reviews">
+      <tr>
+        <td>{{rating.reviewer}}</td>
+        <td>{{rating.rating}}</td>
+        <td>{{rating.content}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

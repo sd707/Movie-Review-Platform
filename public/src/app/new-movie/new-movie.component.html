@@ -1,0 +1,43 @@
+<div class="card ml-3 mr-3 mt-3">
+  <div class="card-header">
+    <h5>Submit a movie and your review</h5>
+    <h4 *ngIf="this.myError"> {{ this.myError }} </h4>
+  </div>
+  <div class="card-body">
+    <form (submit)="addMovie()">
+      <div class="form-group">
+        <label for="formGroupExampleInput">Movie Title:</label>
+        <input type="text" class="form-control" id="formGroupExampleInput" name="newMovie.name" [(ngModel)]="newMovie.name">
+        <h6 *ngIf="this.newMovie.name.length < 3 && this.newMovie.name.length > 0"> Name must be at least 3 characters </h6>
+      </div>
+      <div class="form-group">
+        <label for="formGroupExampleInput2">Your Name:</label>
+        <input type="text" class="form-control" id="formGroupExampleInput2" name="newMovie.user" [(ngModel)]="newMovie.user">
+        <h6 *ngIf="this.newMovie.user.length < 3 && this.newMovie.user.length > 0"> Your name must be at least 3 characters </h6>
+      </div>
+      <label for="formGroupReview">Review:</label>
+      <div class="form-group ml-4" id="formGroupReview">
+<!--        <div class="form-group">-->
+<!--          <label for="formGroupExampleStars">Stars:</label>-->
+<!--          <input type="text" class="form-control" id="formGroupExampleStars" name="newMovie.rating" [(ngModel)]="newMovie.rating">-->
+<!--        </div>-->
+        <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label>
+        <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="newMovie.rating" [(ngModel)]="newMovie.rating">
+          <option selected>Choose...</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+        <div class="form-group">
+          <label for="formGroupExampleContent">Your Review:</label>
+          <input type="text" class="form-control" id="formGroupExampleContent" name="newMovie.content" [(ngModel)]="newMovie.content">
+          <h6 *ngIf="this.newMovie.content.length < 3 && this.newMovie.content.length > 0"> Review be at least 3 characters </h6>
+        </div>
+      </div>
+      <input class="btn btn-primary" [disabled] = "this.newMovie.name.length < 3 && this.newMovie.name.length > 0 || this.newMovie.user.length < 3 && this.newMovie.user.length > 0 || this.newMovie.content.length < 3 && this.newMovie.content.length > 0" type="submit" value="Submit"/>
+      <button class="btn btn-primary ml-3"  [routerLink]="['/movies']">Cancel</button>
+    </form>
+  </div>
+</div>
